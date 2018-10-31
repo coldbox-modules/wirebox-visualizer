@@ -65,7 +65,7 @@ component{
 
         // Build Docs
         arguments.outputDir = variables.buildDir & "/apidocs";
-        docs( argumentCollection=arguments );
+        //docs( argumentCollection=arguments );
 
         // checksums
         buildChecksums();

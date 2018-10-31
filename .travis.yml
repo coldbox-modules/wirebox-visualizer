@@ -58,7 +58,7 @@ script:
   # Build Project
   - box task run taskfile=build/Build target=run :version=${TARGET_VERSION} :projectName=${MODULE_ID} :buildID=${TRAVIS_BUILD_NUMBER} :branch=${TRAVIS_BRANCH}
   # Cat results for debugging
-  - cat build/results.json
+  #- cat build/results.json
 
 after_failure:
   - cd $TRAVIS_BUILD_DIR/test-harness
@@ -83,22 +83,6 @@ deploy:
     bucket: "downloads.ortussolutions.com"
     local-dir: $TRAVIS_BUILD_DIR/.artifacts/$MODULE_ID
     upload-dir: ortussolutions/coldbox-modules/$MODULE_ID
-    acl: public_read
-
-  # API Docs Deployment
-  - provider: s3
-    on:
-      branch:
-        - master
-        - development
-      condition: "$ENGINE = lucee@5"
-    skip_cleanup: true
-    #AWS Credentials need to be set in Travis
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: $AWS_ACCESS_SECRET
-    bucket: "apidocs.ortussolutions.com"
-    local-dir: $TRAVIS_BUILD_DIR/.tmp/apidocs
-    upload-dir: coldbox-modules/$MODULE_ID/$TARGET_VERSION
     acl: public_read
 
 after_deploy:

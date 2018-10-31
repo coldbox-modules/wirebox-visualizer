@@ -1,4 +1,7 @@
+
 # WireBox Visualizer
+
+[![Build Status](https://travis-ci.org/coldbox-modules/wirebox-visualizer.svg?branch=master)](https://travis-ci.org/coldbox-modules/wirebox-visualizer)
 
 This module creates a nifty visual representation of all the CFCs in your application that WireBox manages as well as what they have injected into them.  
 
