@@ -48,9 +48,9 @@ script:
   # run our dependency install to ensure the workbench is in place
   - box install
   # run our matrix server
-  - box server start serverConfigFile="server-${ENGINE}.json"
+  #- box server start serverConfigFile="server-${ENGINE}.json"
   # Startup the app
-  - curl http://localhost:60299
+  #- curl http://localhost:60299
   # Debugging of tests
   #- curl http://localhost:60299/tests/runner.cfm?reporter=json -o testresults.json && cat testresults.json
   # move back to build dir to build it
