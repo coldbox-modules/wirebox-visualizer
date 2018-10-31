@@ -58,7 +58,7 @@ component{
     ){
 
         // Run the tests
-        runTests();
+        //runTests();
 
         // Build the source
         buildSource( argumentCollection=arguments );
