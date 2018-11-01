@@ -6,6 +6,7 @@
 component{
 
 	function index( event, rc, prc ){
+		param name="rc.filter" default="modules_app";
 		event.setView( "home/index" );
 	}
 
