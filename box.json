@@ -1,28 +1,32 @@
 {
-	"name" 		: "WireBox Visualizer",
-	"version"   : "1.0.0",
-    "location"  : "http://downloads.ortussolutions.com/ortussolutions/coldbox-modules/wirebox-visualizer/@build.version@/wirebox-visualizer-@build.version@.zip",
-	"author" 	: "Ortus Solutions <info@ortussolutions.com",
-	"homepage"	: "https://github.com/coldbox-modules/wirebox-visualizer",
-	"documentation"		: "https://github.com/coldbox-modules/wirebox-visualizer",
-	"repository"		: { "type" : "git", "url" : "https://github.com/coldbox-modules/wirebox-visualizer" },
-	"bugs" : "https://github.com/coldbox-modules/wirebox-visualizer",
-	"shortDescription"	: "",
-	"slug"		: "wirebox-visualizer",
-	"type"		: "modules",
-	"keywords":"",
-	"license"			: [
-		{ "type" : "Apache2", "url" : "http://www.apache.org/licenses/LICENSE-2.0.html" }
-	],
-	"contributors"		: [
-	],
-	"dependencies" 	:{
-	},
-	"ignore":[
+    "name":"WireBox Visualizer",
+    "version":"1.0.1",
+    "location":"http://downloads.ortussolutions.com/ortussolutions/coldbox-modules/wirebox-visualizer/@build.version@/wirebox-visualizer-@build.version@.zip",
+    "author":"Ortus Solutions <info@ortussolutions.com",
+    "homepage":"https://github.com/coldbox-modules/wirebox-visualizer",
+    "documentation":"https://github.com/coldbox-modules/wirebox-visualizer",
+    "repository":{
+        "type":"git",
+        "url":"https://github.com/coldbox-modules/wirebox-visualizer"
+    },
+    "bugs":"https://github.com/coldbox-modules/wirebox-visualizer",
+    "shortDescription":"",
+    "slug":"wirebox-visualizer",
+    "type":"modules",
+    "keywords":"",
+    "license":[
+        {
+            "type":"Apache2",
+            "url":"http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    ],
+    "contributors":[],
+    "dependencies":{},
+    "ignore":[
         "**/.*",
         "test-harness"
     ],
-	"scripts":{
+    "scripts":{
         "toMaster":"recipe build/toMaster.boxr"
     }
 }
