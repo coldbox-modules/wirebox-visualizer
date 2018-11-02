@@ -4,9 +4,13 @@
 * ---
 */
 component{
+	property name='instanceService' inject='InstanceService@wireboxvisualizer';
 
 	function index( event, rc, prc ){
 		param name="rc.filter" default="modules_app";
+		
+		prc.instanceMap = instanceService.buildInstanceMap();
+		
 		event.setView( "home/index" );
 	}
 
@@ -25,6 +29,7 @@ component{
 			cfHeader( statuscode=404 );
 			return 'Gone' ;
 		}
+		// TODO: Detect proper MIME Type
 		cfcontent( type='text/plain', file=thispath, reset=true  );
 	}
 

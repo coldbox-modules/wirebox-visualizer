@@ -4,28 +4,32 @@
 * ---
 */
 component{
+	property name='wirebox' inject='wirebox';
 
 	/**
 	* Every time WireBox finishes autowiring a CFC, makea note of everything that was injected into it
 	* The mapping object contains the list of DI properties and setters that were processed.
 	*/
-	function afterInstanceAutowire() {
+	function buildInstanceMap() {
+		
+		var instanceMap = {};
+		
+		wirebox.getBinder().getMappings().each( function( mappingID, mapping ){
+			if( mappingID contains 'wirebox-visualizer' || mappingID.endsWith( '@coldbox' ) ) {
+				return;
+			}
 			// DIProperty injection
-			processInjection( interceptData.mapping.getDIProperties(), interceptData.targetID );
+			processInjection( mapping.getDIProperties(), mappingID, instanceMap );
 			// DISetter injection
-			processInjection( interceptData.mapping.getDISetters(), interceptData.targetID );
+			processInjection( mapping.getDISetters(), mappingID, instanceMap );
+		} );
+		
+		return instanceMap;
+		
 	}
 	
 	
-	private function processInjection( required DIData, required targetID ){
-		
-		// Init a controller-level setting to hold the data.  This will persist across requests but will clear on fwreinit
-		if( !controller.settingExists( '__instanceMapData' ) ) {
-			controller.setSetting( '__instanceMapData', {} );
-		}
-		
-		// Since setting is a struct, we are modifying it reference.
-		var instanceMapData = controller.getSetting( '__instanceMapData' );
+	private function processInjection( required DIData, required targetID, required struct instanceMap ){
 		
 		for( var x=1; x lte arrayLen( arguments.DIData ); x++ ){
 			var thisDIData = arguments.DIData[ x ];
@@ -44,9 +48,9 @@ component{
 			
 			//targetID = targetID.listLast( '.' );
 			// Add information about this injection to our global setting
-			instanceMapData[ arguments.targetID ] = instanceMapData[ arguments.targetID ] ?: [];
-			if( !instanceMapData[ arguments.targetID ].contains( thisInstanceName ) ) {
-				instanceMapData[ arguments.targetID ].append( thisInstanceName );	
+			instanceMap[ arguments.targetID ] = instanceMap[ arguments.targetID ] ?: [];
+			if( !instanceMap[ arguments.targetID ].contains( thisInstanceName ) ) {
+				instanceMap[ arguments.targetID ].append( thisInstanceName );	
 			}
 			
 			//systemoutput( "Dependency: #thisInstanceName# --> injected into #arguments.targetID#", 1 );

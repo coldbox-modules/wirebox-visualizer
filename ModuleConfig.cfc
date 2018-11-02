@@ -11,6 +11,7 @@ component {
 	this.webURL 			= "https://www.ortussolutions.com";
 	// Model Namespace
 	this.modelNamespace		= "wireBoxVisualizer";
+	this.autoMapModels		= true;
 	// CF Mapping
 	this.cfmapping			= "wireBoxVisualizer";
 	this.entryPoint			= "wireBoxVisualizer";
