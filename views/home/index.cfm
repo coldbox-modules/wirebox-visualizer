@@ -38,9 +38,9 @@
 	<cfloop collection="#prc.instanceMap#" item="target">
 		<cfif findNoCase("#rc.filter#", target) || !len(rc.filter) >
 			<cfscript>
-			var targetGroup = listLast(target, '@')
+			targetGroup = listLast(target, '@');
 			if(!len(targetGroup)){
-				targetGroup = 'NA'
+				targetGroup = 'NA';
 			}
 			</cfscript>
 			if( nodes.getIds( { filter: function( node ) { return node.id == '#encodeForJavascript( target )#' } } ).length == 0 ) {
@@ -50,9 +50,9 @@
 			
 			<cfloop array="#prc.instanceMap[ target ]#" index="dependency">
 				<cfscript>
-				var dependencyGroup = listLast(dependency, '@')
+				dependencyGroup = listLast(dependency, '@');
 				if(!len(dependencyGroup)){
-					dependencyGroup = 'NA'
+					dependencyGroup = 'NA';
 				}
 				if( listLen(dependencyGroup, ':') ){
 					dependencyGroup = listFirst(dependencyGroup, ':');
