@@ -49,7 +49,7 @@ component{
 			//targetID = targetID.listLast( '.' );
 			// Add information about this injection to our global setting
 			instanceMap[ arguments.targetID ] = instanceMap[ arguments.targetID ] ?: [];
-			if( !instanceMap[ arguments.targetID ].contains( thisInstanceName ) ) {
+			if( !arrayContains( instanceMap[ arguments.targetID ], thisInstanceName ) ) {
 				instanceMap[ arguments.targetID ].append( thisInstanceName );	
 			}
 			
