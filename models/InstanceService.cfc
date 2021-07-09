@@ -13,16 +13,18 @@ component{
 	function buildInstanceMap() {
 		
 		var instanceMap = {};
-		
-		wirebox.getBinder().getMappings().each( function( mappingID, mapping ){
-			if( mappingID contains 'wirebox-visualizer' || mappingID.endsWith( '@coldbox' ) ) {
+
+		for( var wb = wirebox; IsObject(wb); wb = wb.getParent() ) {
+			wb.getBinder().getMappings().each( function( mappingID, mapping ){
+				if( mappingID contains 'wirebox-visualizer' || mappingID.endsWith( '@coldbox' ) ) {
 				return;
-			}
-			// DIProperty injection
-			processInjection( mapping.getDIProperties(), mappingID, instanceMap );
-			// DISetter injection
-			processInjection( mapping.getDISetters(), mappingID, instanceMap );
-		} );
+				}
+				// DIProperty injection
+				processInjection( mapping.getDIProperties(), mappingID, instanceMap );
+				// DISetter injection
+				processInjection( mapping.getDISetters(), mappingID, instanceMap );
+			} );
+		}
 		
 		return instanceMap;
 		
